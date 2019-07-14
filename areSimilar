@@ -1,0 +1,28 @@
+boolean areSimilar(int[] a, int[] b) {
+    int error = 0;
+    int firstErrorA = 0;
+    int firstErrorB = 0;
+    int secondErrorA = 0;
+    int secondErrorB = 0;
+    for (int i = 0; i < a.length; i++) {
+        if (a[i] != b[i]) {
+            error++;
+            
+            if (error == 1) {
+                firstErrorA = a[i];
+                firstErrorB = b[i];
+            } else if (error == 2) {
+                secondErrorA = a[i];
+                secondErrorB = b[i];
+                
+                if (firstErrorA != secondErrorB || secondErrorA != firstErrorB) {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+    }
+    
+    return true;
+}
